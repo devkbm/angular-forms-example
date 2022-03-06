@@ -1,0 +1,13 @@
+<div>
+  {{formField.errors | json}}
+  <label>{{label}}</label>
+  <app-form-field-errors [formField]="formField">
+  </app-form-field-errors>
+  <input
+    type="text"
+    [required]="required"
+    [disabled]="disabled"
+    [ngModel]="value"
+    (ngModelChange)="onChange($event)"
+    (blur)="onTouched()"/>
+</div>
