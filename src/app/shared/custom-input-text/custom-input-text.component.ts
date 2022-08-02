@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-input-text',
@@ -11,15 +11,13 @@ import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from 
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(
         () => CustomInputTextComponent
-      ),
+      ) ,
       multi: true
     }
   ]
 })
-export class CustomInputTextComponent implements ControlValueAccessor {
+export class CustomInputTextComponent implements OnInit, ControlValueAccessor {
 
-  @Input() parentForm?: FormGroup;
-  @Input() fieldName!: string;
   @Input() label!: string;
   @Input() required: boolean = false;
   @Input() disabled: boolean = false;
@@ -30,8 +28,7 @@ export class CustomInputTextComponent implements ControlValueAccessor {
 
   constructor() { }
 
-  get formField(): FormControl {
-    return this.parentForm?.get(this.fieldName) as FormControl;
+  ngOnInit() {
   }
 
   writeValue(obj: any): void {

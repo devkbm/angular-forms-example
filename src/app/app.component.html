@@ -1,11 +1,84 @@
 {{this.fg.value | json }}
 {{this.fg.errors| json }}
-<div [formGroup]="fg">
-  <app-custom-input-text
-    [label]="'label'"
+<form [formGroup]="fg">
+
+   <!-- 폼 오류 메시지 템플릿 -->
+   <ng-template #errorTpl let-control>
+    <ng-container *ngIf="control.hasError('required')">
+      필수 입력 값입니다.
+    </ng-container>
+    <ng-container *ngIf="control.hasError('exists')">
+      기존 코드가 존재합니다.
+    </ng-container>
+  </ng-template>
+
+  <app-nz-input-text
+    [itemId]="'data1'"
+    [label]="'label1'"
     [required]="true"
-    [parentForm]="this.fg"
-    [fieldName]="'input1'"
-    formControlName="input1">
-  </app-custom-input-text>
-</div>
+    [parentFormGroup]="this.fg"
+    [fieldName]="'input_text'"
+    formControlName="input_text"
+    [nzErrorTip]="errorTpl">
+  </app-nz-input-text>
+
+  <app-nz-input-textarea
+    [itemId]="'data2'"
+    [label]="'label2'"
+    [required]="true"
+    [parentFormGroup]="this.fg"
+    [fieldName]="'input_textarea'"
+    formControlName="input_textarea"
+    [nzErrorTip]="errorTpl">
+  </app-nz-input-textarea>
+
+  <app-nz-input-date
+    [itemId]="'data3'"
+    [label]="'label3'"
+    [required]="true"
+    [parentFormGroup]="this.fg"
+    [fieldName]="'input_date'"
+    formControlName="input_date"
+    [nzErrorTip]="errorTpl">
+  </app-nz-input-date>
+
+  <app-nz-input-number-custom
+    [itemId]="'data4'"
+    [label]="'label4'"
+    [required]="true"
+    [parentFormGroup]="this.fg"
+    [fieldName]="'input_number'"
+    formControlName="input_number"
+    [nzErrorTip]="errorTpl">
+  </app-nz-input-number-custom>
+
+  <app-nz-input-select
+    [itemId]="'data5'"
+    [label]="'label5'"
+    [required]="true"
+    [parentFormGroup]="fg"
+    [fieldName]="'input_select'"
+    formControlName="input_select"
+    [options]="selectList" [opt_value]="'value'" [opt_label]="'label'"
+    [placeholder]="'Please select'"
+    [nzErrorTip]="errorTpl">
+  </app-nz-input-select>
+
+  <app-nz-input-tree-select
+    [itemId]="'data6'"
+    [label]="'label6'"
+    [required]="true"
+    [parentFormGroup]="fg"
+    [fieldName]="'input_treeselect'"
+    formControlName="input_treeselect"
+    [nodes]="treeList"
+    [placeholder]="'please select'">
+  </app-nz-input-tree-select>
+
+</form>
+
+
+<app-calendar-daypilot>
+
+</app-calendar-daypilot>
+
