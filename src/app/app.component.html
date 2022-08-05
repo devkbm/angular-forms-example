@@ -1,8 +1,10 @@
+<!--
 {{this.fg.value | json }}
 {{this.fg.errors| json }}
+-->
+<!--
 <form [formGroup]="fg">
 
-   <!-- 폼 오류 메시지 템플릿 -->
    <ng-template #errorTpl let-control>
     <ng-container *ngIf="control.hasError('required')">
       필수 입력 값입니다.
@@ -76,9 +78,10 @@
   </app-nz-input-tree-select>
 
 </form>
-
+-->
 
 <app-daypilot-calendar>
 
 </app-daypilot-calendar>
+
 

@@ -1,14 +1,8 @@
-.container {
+.calendar {
   display: flex;
-  flex-direction: row;
-}
-
-.navigator {
-  margin-right: 10px;
-}
-
-.content {
-  flex-grow: 1;
+  flex-direction: column;
+  align-content: stretch;
+  vertical-align: top;
 }
 
 .header {
@@ -79,5 +73,10 @@ button.selected {
   background-color: #1c4587;
 }
 
-
+/* 달력 높이 100%가 안됨 */
+.contents {
+  flex-basis: content;
+  background-color: black;
+  height: auto;
+}
 
